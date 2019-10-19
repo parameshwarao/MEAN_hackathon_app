@@ -1,0 +1,21 @@
+<p>match-details works!</p>
+
+
+<div class="container-fluid">
+    <ul *ngIf="matchdetails">
+        <li>CITY:- {{matchdetails.city}}</li>
+        <li>DATE:- {{matchdetails.date}}</li>
+        <li>PLAYER OF THE MATCH:- {{matchdetails.player_of_match}}</li>
+        <li>SEASON:- {{matchdetails.season}}</li>
+        <li>MATCH :- {{matchdetails.team1}} VS {{matchdetails.team2}}</li>
+        <li>TOSS WINNER:- {{matchdetails.toss_winner}}</li>
+        <li>TOSS DECISION :- {{matchdetails.toss_winner}} chose to {{matchdetails.toss_decision}} </li>
+        <li>WINNER:- {{matchdetails.winner}}</li>
+        <li>RESULT NORMAL:- {{matchdetails.result}}</li>
+        <li *ngIf="matchdetails.umpire1" >UMPIRE 1:- {{matchdetails.umpire1}}</li>
+        <li *ngIf="matchdetails.umpire2" >UMPIRE 2:- {{matchdetails.umpire2}}</li>
+        <li *ngIf="matchdetails.umpire3" >UMPIRE 3:- {{matchdetails.umpire3}}</li>
+        <li *ngIf="team1score" >{{matchdetails.team1}} SCORED {{team1score}} RUNS</li>
+        <li *ngIf="team2score" >{{matchdetails.team2}} SCORED {{team2score}} RUNS</li>       
+    </ul>
+</div>

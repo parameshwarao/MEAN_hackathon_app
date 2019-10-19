@@ -1,0 +1,39 @@
+<p>sign-up works!</p>
+
+
+<div class="container-fluid">
+    
+
+  
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+              <!-- Tabs Titles -->
+              <h2 class="inactive underlineHover" [routerLink]="['../login']" > Sign In </h2>
+              <h2 class="active" >Sign Up </h2>
+          
+              <!-- Icon -->
+              <!--<div class="fadeIn first">
+                <img src="./../../../assets/cricket_50.png" id="icon" alt="User Icon" />
+              </div>-->
+          
+              <!-- Login Form -->
+              
+                <input type="text" id="login" class="fadeIn second"  [(ngModel)]="fullname" placeholder="Full name">
+                <input type="text" id="email" class="fadeIn third" [(ngModel)]="email"  placeholder="Email">
+                <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="SIGN UP!!" (click)="signupFunction()">
+                
+              
+          
+              <!-- Remind Passowrd -->
+              <div id="formFooter">
+                <a class="underlineHover" >By default you will be given USER access only</a>
+              </div>
+          
+            </div>
+          </div>
+    
+    
+    
+    
+    </div>

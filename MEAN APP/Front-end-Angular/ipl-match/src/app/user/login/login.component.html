@@ -1,0 +1,39 @@
+<p>login works!</p>
+<!--<button class="btn btn-lg btn-primary btn-block" type="button" (click)="signinFunction()">Sign in</button>-->
+
+
+
+<div class="container-fluid">
+    
+
+  
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="active"> Sign In </h2>
+          <h2 class="inactive underlineHover" [routerLink]="['../sign-up']">Sign Up </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="./../../../assets/cricket_50.png" id="icon" alt="User Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          
+            <input type="text" id="login" class="fadeIn second"  [(ngModel)]="loginID" placeholder="login ID">
+            <input type="password" id="password" class="fadeIn third"  [(ngModel)]="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In" (click)="signinFunction()">
+          
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" style="cursor: pointer" (click)="developerLogin()" >Contact here for development login</a>
+          </div>
+      
+        </div>
+      </div>
+
+
+
+
+</div>

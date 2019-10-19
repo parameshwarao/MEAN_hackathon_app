@@ -1,0 +1,155 @@
+<mat-sidenav-container>
+    <mat-sidenav [mode]="mode"
+    [opened]="opened"
+    [fixedInViewport]="true"
+    [fixedTopGap]="layoutGap">    
+      <mat-nav-list>
+  
+        <a mat-list-item > search by Season: </a>
+        <a mat-list-item > <h4 class="display-6">Search Helper!!</h4> </a>
+        <a mat-list-item > search by: </a>
+        <a mat-list-item > <mat-select placeholder="Season Date:" [(ngModel)]="season" (selectionChange)="seasonSearch($event)">
+            <mat-option value="option" *ngFor='let seasonlist of options' [value]="seasonlist">{{seasonlist}}</mat-option>            
+          </mat-select> </a>
+        <a mat-list-item > City: </a>
+        <a mat-list-item > 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter city name" [(ngModel)]="cityName" (keyup.enter)="citysearch()">
+                <button mat-button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-button matSuffix mat-icon-button aria-label="search" (click)="citysearch()">
+                      <mat-icon>search</mat-icon>
+                    </button>
+              </mat-form-field>
+        </a>
+        <a mat-list-item > Venue: </a>
+        <a mat-list-item > 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter Venue name" [(ngModel)]="venueName" (keyup.enter)="VenueSearch()">
+                <button mat-button *ngIf="venueName" matSuffix mat-icon-button aria-label="Clear" (click)="venueName=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-button matSuffix mat-icon-button aria-label="search" (click)="VenueSearch()">
+                      <mat-icon>search</mat-icon>
+                    </button>
+              </mat-form-field>
+        </a>
+        <a mat-list-item >By team played:</a>
+        <a mat-list-item >
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="As Defender"[(ngModel)]="team1" (keyup.enter)="defenderSearch()">
+                <button mat-button *ngIf="team1" matSuffix mat-icon-button aria-label="Clear" (click)="team1=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-button matSuffix mat-icon-button aria-label="search" (click)="defenderSearch()">
+                      <mat-icon>search</mat-icon>
+                    </button>
+            </mat-form-field>
+        </a>
+        <a mat-list-item >
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="As Challenger:" [(ngModel)]="team2" (keyup.enter)="challengerSearch()">
+                <button mat-button *ngIf="team2" matSuffix mat-icon-button aria-label="Clear" (click)="team2=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-button matSuffix mat-icon-button aria-label="search" (click)="challengerSearch()">
+                      <mat-icon>search</mat-icon>
+                    </button>
+            </mat-form-field>
+        </a>
+        <a mat-list-item > Winner </a>
+        <a mat-list-item > 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter Wining name" [(ngModel)]="winner" (keyup.enter)="winnerSearch()">
+                <button mat-button *ngIf="winner" matSuffix mat-icon-button aria-label="Clear" (click)="winner=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <button mat-button matSuffix mat-icon-button aria-label="search" (click)="winnerSearch()">
+                      <mat-icon>search</mat-icon>
+                    </button>
+              </mat-form-field>
+        </a>              
+        <a mat-list-item>Reset all search: <button mat-button matSuffix mat-icon-button aria-label="cached" (click)="ResetSearch()">
+            <mat-icon>cached</mat-icon>
+          </button>
+        </a>
+        <!--<a mat-list-item>
+          <mat-icon>cached</mat-icon>
+        </a>-->  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
+
+<Section>
+  <div class="container-fluid">      
+      <div class="row">
+          <div class="col align-self-end">
+              <div class="text-center">
+                  <span class="buttonBlock pagey"> PAGE : <span class="displaynumber"> {{page}} </span> </span><mat-slide-toggle (change)="opened = !opened" title="Click to toggle search">Toggle Search Helper!!</mat-slide-toggle> 
+              </div>
+              <div class="text-right">                               
+                  <button type="button" class="btn btn-primary buttonBlock" (click)="prevPage()" > &#8592; PREVIOUS PAGE</button>
+                  <button type="button" class="btn btn-primary buttonBlock" (click)="nextpage()">NEXT PAGE &#8594;</button>
+                </div>              
+            </div>
+      </div>
+  </div>
+</Section>
+
+
+
+<section>      
+  <div class="container-fluid">
+      <div *ngIf="!ErrorMessage">
+          <h1 class= "myheading">INDIAN PREMIER <span>LEAGUE</span> BELOW <span> TABLE</span></h1> 
+          
+          <table class="responstable" *ngIf="matchlist">
+            
+            <tr>
+              <th>Season</th>
+              <th data-th="MATCH DETAILS"><span>city & Venue</span></th>
+              <th>date</th>
+              <th>MATCH</th>
+              <th>Result</th>       
+            </tr>
+      
+            <tr *ngFor="let match of matchlist">
+              
+                <td [routerLink]="['/Listdetail', match.id]">{{match.season}}</td>
+                <td [routerLink]="['/Listdetail', match.id]">{{match.city}} <br> VENUE:- {{match.venue}}</td>
+                <td [routerLink]="['/Listdetail', match.id]">{{match.date}}</td>
+                <td [routerLink]="['/Listdetail', match.id]">{{match.team1}} vs {{match.team2}}</td>
+                <td [routerLink]="['/Listdetail', match.id]">{{match.winner}} WON BY <span *ngIf="match.win_by_runs"> {{ match.win_by_runs }} RUNS </span> <span *ngIf="match.win_by_wickets"> {{ match.win_by_wickets }} wickets </span>  </td>
+            </tr>  
+           
+            
+          </table>     
+      </div>    
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<div class="container-fluid errorstyling" *ngIf="ErrorMessage" >
+
+    <div class="jumbotron">
+        <h1 class="display-1">500 NODE SERVER ERROR!!</h1>      
+        <h1 class="display-3" style="font-weight:bolder;color:red">PLEASE START THE NODE SERVER</h1>
+        <h1 class="display-3"> OR TROUBLSHOOT WITH EXPRESS BACKEND</h1>
+        <p>ERROR WITH BACKEND SERVER</p>
+      </div>
+
+
+</div>
