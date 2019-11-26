@@ -11,6 +11,7 @@ import { AdminComponent } from './admin/admin.component';
 import { TeamstatsComponent } from './teamstats/teamstats.component';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from "ngx-cookie-service";
 
 /*angular material*/
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -34,13 +35,13 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    RouterModule.forChild([ 
+    RouterModule.forChild([
       { path: 'List', component: MatchListComponent,canActivate:[ListrouteguardService] },
       { path: 'Listdetail/:id', component: MatchDetailsComponent,canActivate:[ListrouteguardService] },
       { path: 'admin', component: AdminComponent,canActivate:[ListrouteguardService] },
       { path: 'teamstats', component: TeamstatsComponent,canActivate:[ListrouteguardService] }
     ])
   ],
-  providers:[ListrouteguardService]
+  providers: [ListrouteguardService, CookieService]
 })
 export class ListModule { }
